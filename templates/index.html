@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{Heading}}</h1>
+    <hr>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+            </tr>
+        </thead>
+
+        {% for contact in Contact %}
+        <tbody>
+            <tr>
+                <th scope="row">{{contact.nama}}</th>
+                <td>{{contact.gender}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{contact.alamat}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock content %}

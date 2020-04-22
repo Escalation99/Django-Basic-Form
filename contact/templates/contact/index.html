@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{Heading}}</h1>
+
+    <div class="container">
+
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ contact_form.nama.label_tag}}
+                {{ contact_form.nama}}
+            </div>
+
+            <div class="form-group">
+                {{ contact_form.gender.label_tag}}
+                {% for component in contact_form.gender %}
+                <div class="form-check">
+                    {{component.tag}}
+                    <label for="{{component.id_for_label}}" class="form-check-label">
+                        {{component.choice_label}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{contact_form.tanggal_lahir.label_tag}}
+                <div class="form-row">
+                    {{contact_form.tanggal_lahir}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ contact_form.email.label_tag}}
+                {{ contact_form.email}}
+            </div>
+
+            <div class="form-group">
+                {{ contact_form.alamat.label_tag}}
+                {{ contact_form.alamat}}
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    {{ contact_form.agree}}
+                    <label for="{{contact_form.agree.id_for_label}}">{{ contact_form.agree.label}}</label>
+                </div>
+            </div>
+            <!-- <table>
+                {{contact_form.as_table}}
+            </table> -->
+            <br>
+            <button type=" submit">Submit</button>
+        </form>
+    </div>
+
+</div>
+{% endblock content %}
